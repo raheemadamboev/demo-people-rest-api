@@ -2,6 +2,7 @@ package xyz.teamgravity.people.dao;
 
 import xyz.teamgravity.people.model.PersonModel;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface PersonDao {
@@ -12,4 +13,6 @@ public interface PersonDao {
         UUID id = UUID.randomUUID();
         return insertPerson(id, person);
     }
+
+    List<PersonModel> selectAllPeople();
 }

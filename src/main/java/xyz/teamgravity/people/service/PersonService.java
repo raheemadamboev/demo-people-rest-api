@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import xyz.teamgravity.people.dao.PersonDao;
 import xyz.teamgravity.people.model.PersonModel;
 
+import java.util.List;
+
 @Service
 public class PersonService {
 
@@ -16,5 +18,9 @@ public class PersonService {
 
     public int insertPerson(PersonModel person) {
         return dao.insertPerson(person);
+    }
+
+    public List<PersonModel> selectAllPeople() {
+        return dao.selectAllPeople();
     }
 }

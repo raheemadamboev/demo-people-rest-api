@@ -18,4 +18,9 @@ public class MockPersonDao implements PersonDao {
         MOCK_PERSON.add(new PersonModel(id, person.getName()));
         return 1;
     }
+
+    @Override
+    public List<PersonModel> selectAllPeople() {
+        return MOCK_PERSON;
+    }
 }
