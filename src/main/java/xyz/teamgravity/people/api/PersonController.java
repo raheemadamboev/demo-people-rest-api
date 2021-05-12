@@ -1,10 +1,12 @@
 package xyz.teamgravity.people.api;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 import xyz.teamgravity.people.model.PersonModel;
 import xyz.teamgravity.people.service.PersonService;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,7 +22,7 @@ public class PersonController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public int insertPerson(@RequestBody PersonModel person) {
+    public int insertPerson(@Valid @NonNull @RequestBody PersonModel person) {
         System.out.print("Shit " + person.getName());
         return service.insertPerson(person);
     }
@@ -42,7 +44,7 @@ public class PersonController {
     }
 
     @PutMapping
-    public int updatePerson(@RequestBody PersonModel person) {
+    public int updatePerson(@Valid @NonNull @RequestBody PersonModel person) {
         return service.updatePerson(person.getId(), person);
     }
 }
