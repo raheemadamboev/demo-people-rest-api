@@ -18,4 +18,6 @@ public interface PersonDao {
     List<PersonModel> selectAllPeople();
 
     Optional<PersonModel> selectPerson(UUID id);
+
+    int deletePerson(UUID id);
 }

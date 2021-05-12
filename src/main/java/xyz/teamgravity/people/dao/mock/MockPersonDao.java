@@ -32,4 +32,15 @@ public class MockPersonDao implements PersonDao {
                 .filter(person -> person.getId().equals(id))
                 .findFirst();
     }
+
+    @Override
+    public int deletePerson(UUID id) {
+        Optional<PersonModel> person = selectPerson(id);
+        if (person.isEmpty()) {
+            return 0;
+        } else {
+            MOCK_PERSON.remove(person.get());
+            return 1;
+        }
+    }
 }

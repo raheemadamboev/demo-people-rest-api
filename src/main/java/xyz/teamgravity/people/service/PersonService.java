@@ -19,7 +19,11 @@ public class PersonService {
     }
 
     public int insertPerson(PersonModel person) {
-        return dao.insertPerson(person);
+        if (person.getId() == null) {
+            return dao.insertPerson(person);
+        } else {
+            return dao.insertPerson(person.getId(), person);
+        }
     }
 
     public List<PersonModel> selectAllPeople() {
@@ -28,5 +32,9 @@ public class PersonService {
 
     public Optional<PersonModel> selectPerson(UUID id) {
         return dao.selectPerson(id);
+    }
+
+    public int deletePerson(UUID id) {
+        return dao.deletePerson(id);
     }
 }
