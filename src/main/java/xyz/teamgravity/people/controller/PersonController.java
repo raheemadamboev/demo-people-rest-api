@@ -1,4 +1,4 @@
-package xyz.teamgravity.people.api;
+package xyz.teamgravity.people.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.lang.NonNull;
