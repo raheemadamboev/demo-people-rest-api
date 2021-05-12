@@ -30,14 +30,19 @@ public class PersonController {
         return service.selectAllPeople();
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "{id}")
     public PersonModel selectPerson(@PathVariable("id") UUID id) {
         return service.selectPerson(id).orElse(null);
     }
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public int deletePerson(@PathVariable("id") UUID id) {
         return service.deletePerson(id);
+    }
+
+    @PutMapping
+    public int updatePerson(@RequestBody PersonModel person) {
+        return service.updatePerson(person.getId(), person);
     }
 }

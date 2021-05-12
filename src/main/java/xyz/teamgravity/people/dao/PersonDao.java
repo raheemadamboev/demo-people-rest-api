@@ -2,6 +2,7 @@ package xyz.teamgravity.people.dao;
 
 import xyz.teamgravity.people.model.PersonModel;
 
+import java.rmi.server.UID;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -20,4 +21,6 @@ public interface PersonDao {
     Optional<PersonModel> selectPerson(UUID id);
 
     int deletePerson(UUID id);
+
+    int updatePerson(UUID id, PersonModel person);
 }

@@ -43,4 +43,22 @@ public class MockPersonDao implements PersonDao {
             return 1;
         }
     }
+
+    @Override
+    public int updatePerson(UUID id, PersonModel person) {
+        Optional<PersonModel> dbPerson = selectPerson(id);
+
+        if (dbPerson.isEmpty()) {
+            return 0;
+        } else {
+            int index = MOCK_PERSON.indexOf(dbPerson.get());
+
+            if (index == -1) {
+                return 0;
+            } else {
+                MOCK_PERSON.set(index, person);
+            }
+            return 1;
+        }
+    }
 }
