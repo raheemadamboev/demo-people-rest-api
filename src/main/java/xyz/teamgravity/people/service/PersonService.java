@@ -6,6 +6,8 @@ import xyz.teamgravity.people.dao.PersonDao;
 import xyz.teamgravity.people.model.PersonModel;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class PersonService {
@@ -22,5 +24,9 @@ public class PersonService {
 
     public List<PersonModel> selectAllPeople() {
         return dao.selectAllPeople();
+    }
+
+    public Optional<PersonModel> selectPerson(UUID id) {
+        return dao.selectPerson(id);
     }
 }

@@ -6,6 +6,7 @@ import xyz.teamgravity.people.model.PersonModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository("mock")
@@ -22,5 +23,13 @@ public class MockPersonDao implements PersonDao {
     @Override
     public List<PersonModel> selectAllPeople() {
         return MOCK_PERSON;
+    }
+
+    @Override
+    public Optional<PersonModel> selectPerson(UUID id) {
+        return MOCK_PERSON
+                .stream()
+                .filter(person -> person.getId().equals(id))
+                .findFirst();
     }
 }

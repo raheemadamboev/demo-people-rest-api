@@ -6,6 +6,8 @@ import xyz.teamgravity.people.model.PersonModel;
 import xyz.teamgravity.people.service.PersonService;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.UUID;
 
 @RequestMapping("api/person")
 @RestController
@@ -27,5 +29,10 @@ public class PersonController {
     @GetMapping
     public List<PersonModel> selectAllPeople() {
         return service.selectAllPeople();
+    }
+
+    @GetMapping(path = "/{id}")
+    public PersonModel selectPerson(@PathVariable("id") UUID id) {
+        return service.selectPerson(id).orElse(null);
     }
 }

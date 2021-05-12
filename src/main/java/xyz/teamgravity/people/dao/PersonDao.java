@@ -3,6 +3,7 @@ package xyz.teamgravity.people.dao;
 import xyz.teamgravity.people.model.PersonModel;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface PersonDao {
@@ -15,4 +16,6 @@ public interface PersonDao {
     }
 
     List<PersonModel> selectAllPeople();
+
+    Optional<PersonModel> selectPerson(UUID id);
 }
