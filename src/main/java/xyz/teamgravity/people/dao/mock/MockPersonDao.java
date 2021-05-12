@@ -2,6 +2,7 @@ package xyz.teamgravity.people.dao.mock;
 
 import org.springframework.stereotype.Repository;
 import xyz.teamgravity.people.dao.PersonDao;
+import xyz.teamgravity.people.exception.PersonNotExistException;
 import xyz.teamgravity.people.model.PersonModel;
 
 import java.util.ArrayList;
@@ -27,11 +28,14 @@ public class MockPersonDao implements PersonDao {
 
     @Override
     public Optional<PersonModel> selectPerson(UUID id) {
-        // TODO throw exception
-        return MOCK_PERSON
+        Optional<PersonModel> person = MOCK_PERSON
                 .stream()
-                .filter(person -> person.getId().equals(id))
+                .filter(filteredPerson -> filteredPerson.getId().equals(id))
                 .findFirst();
+
+        if (person.isEmpty()) throw new PersonNotExistException("Person not found with the id: " + id.toString());
+
+        return person;
     }
 
     @Override
