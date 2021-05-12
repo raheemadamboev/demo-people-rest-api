@@ -23,7 +23,6 @@ public class PersonController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public int insertPerson(@Valid @NonNull @RequestBody PersonModel person) {
-        System.out.print("Shit " + person.getName());
         return service.insertPerson(person);
     }
 
@@ -45,6 +44,6 @@ public class PersonController {
 
     @PutMapping
     public int updatePerson(@Valid @NonNull @RequestBody PersonModel person) {
-        return service.updatePerson(person.getId(), person);
+        return service.updatePerson(person);
     }
 }

@@ -12,7 +12,7 @@ import java.util.UUID;
 @Repository("mock")
 public class MockPersonDao implements PersonDao {
 
-    private static List<PersonModel> MOCK_PERSON = new ArrayList<>();
+    private static final List<PersonModel> MOCK_PERSON = new ArrayList<>();
 
     @Override
     public int insertPerson(UUID id, PersonModel person) {
@@ -27,6 +27,7 @@ public class MockPersonDao implements PersonDao {
 
     @Override
     public Optional<PersonModel> selectPerson(UUID id) {
+        // TODO throw exception
         return MOCK_PERSON
                 .stream()
                 .filter(person -> person.getId().equals(id))
@@ -45,8 +46,8 @@ public class MockPersonDao implements PersonDao {
     }
 
     @Override
-    public int updatePerson(UUID id, PersonModel person) {
-        Optional<PersonModel> dbPerson = selectPerson(id);
+    public int updatePerson(PersonModel person) {
+        Optional<PersonModel> dbPerson = selectPerson(person.getId());
 
         if (dbPerson.isEmpty()) {
             return 0;
