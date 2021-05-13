@@ -14,7 +14,7 @@ public class PersonService {
 
     private final PersonDao dao;
 
-    public PersonService(@Qualifier("mock") PersonDao dao) {
+    public PersonService(@Qualifier("postgres") PersonDao dao) {
         this.dao = dao;
     }
 
