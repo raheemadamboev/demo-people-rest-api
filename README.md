@@ -3,7 +3,7 @@ Java Spring Boot, REST API to list people details. Application is connected to P
 
 <img src="https://i.imgur.com/Id9o5iJ.jpg" alt="spring boot" width="600" height="520" />
 
-**Technoligies used:** 
+**Tech stack:** 
 
 - Java Spring Boot 
 - Docker 
